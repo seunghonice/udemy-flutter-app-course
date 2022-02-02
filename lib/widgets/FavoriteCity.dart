@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../const/currencies.dart';
 
 class FavoriteCity extends StatefulWidget {
   @override
@@ -7,7 +8,6 @@ class FavoriteCity extends StatefulWidget {
 
 class _FavoriteCityState extends State<FavoriteCity> {
   String cityName = "";
-  var _currencies = ["Rupees", "Dollar", "won"];
   var _currentItemSelected = "Rupees";
 
   @override
@@ -34,7 +34,7 @@ class _FavoriteCityState extends State<FavoriteCity> {
             ),
             DropdownButton<String>(
               value: _currentItemSelected,
-              items: _currencies
+              items: currencies
                   .map((i) => DropdownMenuItem(value: i, child: Text(i)))
                   .toList(),
               onChanged: (String? newItemSelected) {
