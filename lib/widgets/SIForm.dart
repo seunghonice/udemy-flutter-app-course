@@ -10,9 +10,12 @@ class SIForm extends StatefulWidget {
 
 class _SIFormState extends State<SIForm> {
   var _minimumPadding = 5.0;
+  var currentItem = currencies[0];
 
   @override
   Widget build(BuildContext context) {
+    TextStyle? textStyle = Theme.of(context).textTheme.titleSmall;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("SIForm"),
@@ -26,9 +29,11 @@ class _SIFormState extends State<SIForm> {
           Padding(
             padding: EdgeInsets.only(top: _minimumPadding),
             child: TextField(
+              style: textStyle,
               decoration: InputDecoration(
                   labelText: "Principal",
                   hintText: "Enter Principal E.g. 12000",
+                  labelStyle: textStyle,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0))),
             ),
@@ -39,6 +44,7 @@ class _SIFormState extends State<SIForm> {
                 decoration: InputDecoration(
                     labelText: "Rate of Interest",
                     hintText: "In percent",
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0))),
               )),
@@ -52,6 +58,7 @@ class _SIFormState extends State<SIForm> {
                     decoration: InputDecoration(
                         labelText: "Term",
                         hintText: "Time in years",
+                        labelStyle: textStyle,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0))),
                   )),
@@ -60,12 +67,20 @@ class _SIFormState extends State<SIForm> {
                   ),
                   Expanded(
                       child: DropdownButton<String>(
-                    value: currencies[0],
+                    value: currentItem,
                     items: currencies.map((String value) {
                       return DropdownMenuItem<String>(
-                          value: value, child: Text(value));
+                          value: value,
+                          child: Text(
+                            value,
+                            style: textStyle,
+                          ));
                     }).toList(),
-                    onChanged: (String? newValue) => {},
+                    onChanged: (String? newValue) => {
+                      setState(() {
+                        currentItem = newValue!;
+                      })
+                    },
                   )),
                 ],
               )),
@@ -75,13 +90,16 @@ class _SIFormState extends State<SIForm> {
                 children: <Widget>[
                   Expanded(
                       child: ElevatedButton(
-                    child: Text("Reset"),
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black)),
+                    child: Text("Reset", textScaleFactor: 1.2,),
                     onPressed: () {},
                   )),
                   Container(width: _minimumPadding * 2),
                   Expanded(
                       child: ElevatedButton(
-                    child: Text("Calculate"),
+                    child: Text("Calculate", textScaleFactor: 1.2,),
                     onPressed: () {},
                   ))
                 ],
