@@ -1,1 +1,1 @@
-var currencies = ["Rupees", "Dollar", "won"];
+var currencies = ["Rupees", "Dollars", "Pounds", "won"];
