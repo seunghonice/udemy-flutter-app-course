@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_flutter_app_course/widgets/SIForm.dart';
 
-import './widgets/FavoriteCity.dart';
-
 void main() {
   /**
    * FavoriteCity
@@ -17,5 +15,15 @@ void main() {
   /**
    * Calculator App
    */
-  runApp(MaterialApp(title: "Calculator App", home: SIForm()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Calculator App",
+      home: SIForm(),
+    theme: ThemeData(
+      primaryColor: Colors.amber,
+      accentColor: Colors.amberAccent,
+      backgroundColor: Colors.black12,
+      buttonColor: Colors.amberAccent
+    ),
+  ));
 }
