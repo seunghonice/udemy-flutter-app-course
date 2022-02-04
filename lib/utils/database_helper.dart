@@ -54,6 +54,17 @@ class DatabaseHelper {
     return result;
   }
 
+  Future<List<Note>> getNoteList() async {
+    var noteMapList = await getNoteMapList();
+    int count = noteMapList.length;
+
+    List<Note> noteList = <Note>[];
+    for (Map<String, dynamic> n in noteMapList) {
+      noteList.add(Note.fromMapObject(n));
+    }
+    return noteList;
+  }
+
   // region Insert Operation: Insert a Note object to database
   Future<int> insertNote(Note note) async {
     Database db = await database;
@@ -61,6 +72,7 @@ class DatabaseHelper {
     var result = await db.insert(noteTable, note.toMap());
     return result;
   }
+
   // endregion
 
   // region Update Operation: Update a Note object and save it to database
@@ -71,16 +83,18 @@ class DatabaseHelper {
         where: "$colId = ?", whereArgs: [note.id]);
     return result;
   }
+
   // endregion
 
   // region Delete Operation: Delete a Note object from database
-  Future<int> deleteNote(Note note) async {
+  Future<int> deleteNote(int noteId) async {
     Database db = await database;
 
     var result =
-        await db.delete(noteTable, where: "$colId = ?", whereArgs: [note.id]);
+        await db.delete(noteTable, where: "$colId = ?", whereArgs: [noteId]);
     return result;
   }
+
   // endregion
 
   // region Get number of Note objects in database
@@ -91,5 +105,5 @@ class DatabaseHelper {
     int? result = Sqflite.firstIntValue(x);
     return result ?? 0;
   }
-  // endregion
+// endregion
 }

@@ -1,5 +1,5 @@
 class Note {
-  int _id = -1;
+  int _id = 0;
   String _title = "";
   String _description = "";
   String _date = "";
