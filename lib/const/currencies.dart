@@ -1,0 +1,1 @@
+var currencies = ["Rupees", "Dollars", "Pounds", "won"];
