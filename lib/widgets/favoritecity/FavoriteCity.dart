@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../const/currencies.dart';
+import '../../const/currencies.dart';
 
 class FavoriteCity extends StatefulWidget {
   @override
