@@ -96,7 +96,7 @@ class _NoteKeeperState extends State<NoteKeeper> {
   }
 
   void _delete(BuildContext context, Note note) async {
-    int result = await databaseHelper.deleteNote(note.id);
+    int result = await databaseHelper.deleteNote(note.id!);
 
     if (result != 0) {
       _showSnackBar(context, "Note Deleted Succesffully!");

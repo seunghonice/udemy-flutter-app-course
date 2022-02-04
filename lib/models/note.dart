@@ -1,5 +1,5 @@
 class Note {
-  int _id = 0;
+  int? _id;
   String _title = "";
   String _description = "";
   String _date = "";
@@ -10,7 +10,7 @@ class Note {
   Note.withId(
       this._id, this._title, this._date, this._priority, this._description);
 
-  int get id => _id;
+  int? get id => _id;
 
   String get title => _title;
 
@@ -45,7 +45,7 @@ class Note {
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
 
-    if (_id > -1) {
+    if (_id != null) {
       map['id'] = _id;
     }
     map['title'] = _title;

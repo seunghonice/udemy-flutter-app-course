@@ -56,7 +56,6 @@ class DatabaseHelper {
 
   Future<List<Note>> getNoteList() async {
     var noteMapList = await getNoteMapList();
-    int count = noteMapList.length;
 
     List<Note> noteList = <Note>[];
     for (Map<String, dynamic> n in noteMapList) {
